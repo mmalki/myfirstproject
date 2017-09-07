@@ -23,11 +23,11 @@ public class MyfirstprojectApplicationTests {
 
 		System.out.println(TodoService.todos.size());
 
-		List<Todo> filtre = todoService.retrieveTodos("user1");
-		filtre.forEach(System.out::println);
+		Todo filtre = todoService.retrieveTodos("user1");
+		//filtre.(System.out::println);
 
-		todoService.deleteTodo(2);
-		TodoService.todos.forEach(System.out::println);
+		//todoService.deleteTodo(2);
+		//TodoService.todos.forEach(System.out::println);
 
 	}
 

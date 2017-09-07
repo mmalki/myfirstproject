@@ -2,24 +2,37 @@ package com.software2ms.myfirstproject.dto.rest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.software2ms.myfirstproject.utils.CustomLocalDateTimeDeserializer;
+import com.software2ms.myfirstproject.utils.CustomLocalDateTimeSerializer;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Todo {
-    @JsonProperty
+    @JsonProperty("id")
     private int id;
-    @JsonProperty
+    @JsonProperty("user")
     private String user;
-    @JsonProperty
+    @JsonProperty("desc")
     private String desc;
-    @JsonProperty
-    private LocalDate targetDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
+    @JsonProperty("targetDate")
+    private LocalDateTime targetDate;
+    @JsonProperty("done")
     private boolean isDone;
+    public Todo(){
 
-    public Todo(int id, String user, String desc, LocalDate targetDate,
-                boolean isDone) {
+    }
+
+    public Todo( @JsonProperty("id") int id, @JsonProperty("user") String user,@JsonProperty("desc") String desc,@JsonProperty("targetDate") LocalDateTime targetDate,
+                 @JsonProperty("done")boolean isDone) {
         super();
         this.id = id;
         this.user = user;
@@ -52,11 +65,11 @@ public class Todo {
         this.desc = desc;
     }
 
-    public LocalDate getTargetDate() {
+    public LocalDateTime getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(LocalDate targetDate) {
+    public void setTargetDate(LocalDateTime targetDate) {
         this.targetDate = targetDate;
     }
 
@@ -88,10 +101,7 @@ public class Todo {
             return false;
         }
         Todo other = (Todo) obj;
-        if (id != other.id) {
-            return false;
-        }
-        return true;
+        return id == other.id;
     }
 
     @Override
