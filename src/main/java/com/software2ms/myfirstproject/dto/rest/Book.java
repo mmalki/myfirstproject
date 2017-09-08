@@ -1,6 +1,13 @@
 package com.software2ms.myfirstproject.dto.rest;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tbl_book")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String name;
     String author;
