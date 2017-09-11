@@ -1,6 +1,8 @@
 package com.software2ms.myfirstproject.dto.rest;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,11 +10,16 @@ import javax.persistence.*;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String name;
-    String author;
+    @JsonProperty("id")
+    private long id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("author")
+    private String author;
+    public Book(){
 
-    public Book(long id, String name, String author) {
+    }
+    public Book(@JsonProperty("id")long id,@JsonProperty("name")  String name, @JsonProperty("author") String author) {
         super();
         this.id = id;
         this.name = name;
@@ -29,6 +36,18 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override

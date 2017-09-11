@@ -1,16 +1,11 @@
 package com.software2ms.myfirstproject.dto.rest;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.software2ms.myfirstproject.utils.CustomLocalDateTimeDeserializer;
 import com.software2ms.myfirstproject.utils.CustomLocalDateTimeSerializer;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Todo {
@@ -27,9 +22,7 @@ public class Todo {
     private LocalDateTime targetDate;
     @JsonProperty("done")
     private boolean isDone;
-    public Todo(){
 
-    }
 
     public Todo( @JsonProperty("id") int id, @JsonProperty("user") String user,@JsonProperty("desc") String desc,@JsonProperty("targetDate") LocalDateTime targetDate,
                  @JsonProperty("done")boolean isDone) {
