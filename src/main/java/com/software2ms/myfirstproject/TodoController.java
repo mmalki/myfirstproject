@@ -26,7 +26,7 @@ public class TodoController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings eeffrom Spring Boot!";
+        return "Greetings from   ss Spring Boot!";
     }
 
 

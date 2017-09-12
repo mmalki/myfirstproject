@@ -8,7 +8,7 @@
 
     <changeSet id="1" author="malki">
 
-        <createTable tableName="tb_book">
+        <createTable tableName="tbl_book">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
