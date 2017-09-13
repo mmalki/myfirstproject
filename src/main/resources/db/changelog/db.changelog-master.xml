@@ -20,4 +20,18 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="2" author="malki">
+
+        <loadUpdateData
+                        file="liquibase/data/books.csv"
+                        primaryKey="id"
+                        schemaName="public"
+                        tableName="tbl_book">
+
+            <column name="pk_id" type="NUMERIC" />
+            <column name="name" type="STRING" />
+            <column name="author" type="STRING" />
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>

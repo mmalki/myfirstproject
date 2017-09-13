@@ -1,6 +1,6 @@
 package com.software2ms.myfirstproject.services.impl;
 
-import com.software2ms.myfirstproject.dao.BookRepository;
+import com.software2ms.myfirstproject.repository.BookRepository;
 import com.software2ms.myfirstproject.dto.rest.Book;
 import com.software2ms.myfirstproject.services.BookService;
 import org.springframework.stereotype.Service;
